@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './Account.css'
 
-export default function Account({ onLogin, token, username, role, onLogout, setPage }) {
+export default function Account({ onLogin, token, username, role, onLogout, setPage, storeName }) {
+  const displayName = storeName || 'ElektronikNesia'
   const [isLogin, setIsLogin] = useState(true)
   const [form, setForm] = useState({ username: '', email: '', password: '' })
   const [error, setError] = useState('')
@@ -51,7 +52,7 @@ export default function Account({ onLogin, token, username, role, onLogout, setP
             <p style={{ marginTop: '12px', color: '#666' }}>
               {role === 'admin'
                 ? 'Anda memiliki akses ke panel admin untuk mengelola produk.'
-                : 'Selamat datang di ElektronikNesia. Selamat berbelanja!'}
+                : `Selamat datang di ${displayName}. Selamat berbelanja!`}
             </p>
             {role === 'admin' && (
               <button className="btn" onClick={() => setPage('admin')}>

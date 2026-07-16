@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import './Header.css'
 
-export default function Header({ page, setPage, setCategory, token, username, role, onLogout, scrollToSection, onSearch }) {
+export default function Header({ page, setPage, setCategory, token, username, role, onLogout, scrollToSection, onSearch, storeName }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [inputVal, setInputVal] = useState('')
+  const displayName = storeName || 'ElektronikNesia'
+  const logoParts = displayName.length > 10 ? [displayName.slice(0, Math.ceil(displayName.length / 2)), displayName.slice(Math.ceil(displayName.length / 2))] : [displayName, '']
 
   function handleSearch(e) {
     e.preventDefault()
@@ -34,7 +36,7 @@ export default function Header({ page, setPage, setCategory, token, username, ro
           <div className="logo">
             <a href="#" onClick={(e) => { e.preventDefault(); setPage('home'); setCategory('all'); setInputVal('') }}>
               <span className="logo-icon"><i className="fa fa-bolt"></i></span>
-              <span className="logo-text">Elektronik<span>Nesia</span></span>
+              <span className="logo-text">{logoParts[0]}{logoParts[1] && <span>{logoParts[1]}</span>}</span>
             </a>
           </div>
 

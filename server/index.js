@@ -360,6 +360,13 @@ app.get('/api/me', authMiddleware, (req, res) => {
   res.json({ username: req.user.username, role: req.user.role });
 });
 
+app.get('/api/settings', (req, res) => {
+  res.json({
+    storeName: process.env.STORE_NAME || 'ElektronikNesia',
+    storeTagline: process.env.STORE_TAGLINE || 'Pusat Belanja Elektronik Terpercaya'
+  });
+});
+
 if (process.env.NODE_ENV === 'production') {
   const clientDist = path.join(__dirname, '..', 'client', 'dist');
   app.use(express.static(clientDist));

@@ -20,9 +20,14 @@ export default function App() {
   const [username, setUsername] = useState(localStorage.getItem('username') || '')
   const [role, setRole] = useState(localStorage.getItem('role') || '')
   const [allProducts, setAllProducts] = useState([])
+  const [settings, setSettings] = useState({ storeName: 'ElektronikNesia', storeTagline: 'Pusat Belanja Elektronik Terpercaya' })
 
   useEffect(() => {
     fetch('/api/products').then(r => r.json()).then(setAllProducts).catch(() => {})
+    fetch('/api/settings').then(r => r.json()).then(data => {
+      if (data && data.storeName) setSettings(data)
+      if (data?.storeName) document.title = `${data.storeName} — ${data.storeTagline || 'Belanja Elektronik'}`
+    }).catch(() => {})
   }, [])
 
   useEffect(() => {
@@ -74,11 +79,11 @@ export default function App() {
 
   function renderPage() {
     if (page === 'account') {
-      return <Account onLogin={handleLogin} token={token} username={username} role={role} onLogout={handleLogout} setPage={setPage} />
+      return <Account onLogin={handleLogin} token={token} username={username} role={role} onLogout={handleLogout} setPage={setPage} storeName={settings.storeName} />
     }
     if (page === 'admin') {
-      if (!token) return <Account onLogin={handleLogin} token={token} username={username} role={role} onLogout={handleLogout} setPage={setPage} />
-      if (role !== 'admin') return <Account onLogin={handleLogin} token={token} username={username} role={role} onLogout={handleLogout} setPage={setPage} />
+      if (!token) return <Account onLogin={handleLogin} token={token} username={username} role={role} onLogout={handleLogout} setPage={setPage} storeName={settings.storeName} />
+      if (role !== 'admin') return <Account onLogin={handleLogin} token={token} username={username} role={role} onLogout={handleLogout} setPage={setPage} storeName={settings.storeName} />
       return <AdminPanel token={token} onLogout={handleLogout} username={username} />
     }
     if (page === 'info') {
@@ -116,9 +121,10 @@ export default function App() {
         onLogout={handleLogout}
         scrollToSection={scrollToSection}
         onSearch={handleSearch}
+        storeName={settings.storeName}
       />
       {renderPage()}
-      {page !== 'admin' && <Footer setPage={setPage} setInfoPage={setInfoPage} />}
+      {page !== 'admin' && <Footer setPage={setPage} setInfoPage={setInfoPage} storeName={settings.storeName} />}
     </div>
   )
 }

@@ -15,7 +15,10 @@ const PAGE_SLUGS = {
   'Hubungi Kami': 'hubungi-kami',
 }
 
-export default function Footer({ setPage, setInfoPage }) {
+export default function Footer({ setPage, setInfoPage, storeName }) {
+  const displayName = storeName || 'ElektronikNesia'
+  const logoParts = displayName.length > 10 ? [displayName.slice(0, Math.ceil(displayName.length / 2)), displayName.slice(Math.ceil(displayName.length / 2))] : [displayName, '']
+
   function handleLink(label) {
     const slug = PAGE_SLUGS[label]
     if (slug) {
@@ -30,7 +33,7 @@ export default function Footer({ setPage, setInfoPage }) {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <div className="footer-logo">Elektronik<span>Nesia</span></div>
+            <div className="footer-logo">{logoParts[0]}{logoParts[1] && <span>{logoParts[1]}</span>}</div>
             <p>Pusat belanja elektronik terpercaya di Indonesia. Laptop, PC, tablet, HP, dan aksesoris dengan harga terbaik.</p>
             <div className="footer-social">
               <a href="#"><i className="fab fa-facebook-f"></i></a>
@@ -93,7 +96,7 @@ export default function Footer({ setPage, setInfoPage }) {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2026 ElektronikNesia. All rights reserved.</p>
+          <p>&copy; 2026 {displayName}. All rights reserved.</p>
           <div className="footer-payments">
             <span><i className="fa fa-credit-card"></i> Visa</span>
             <span><i className="fa fa-credit-card"></i> Mastercard</span>
