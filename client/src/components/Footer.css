@@ -1,0 +1,150 @@
+.footer {
+  background: var(--dark);
+  color: #aaa;
+  font-size: 13px;
+  padding-top: 60px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.footer h3 {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.footer-brand .footer-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.footer-brand .footer-logo span {
+  color: var(--primary);
+}
+
+.footer-brand p {
+  color: #999;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.footer-social a:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer ul li {
+  margin-bottom: 10px;
+}
+
+.footer ul li a, .footer ul li {
+  color: #999;
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.footer ul li a:hover, .footer ul li:hover {
+  color: var(--primary);
+  padding-left: 4px;
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.footer-contact li i {
+  color: var(--primary);
+  margin-top: 3px;
+  width: 16px;
+}
+
+.footer-newsletter input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-family: inherit;
+  margin-bottom: 10px;
+}
+
+.footer-newsletter input::placeholder {
+  color: #666;
+}
+
+.footer-newsletter .btn {
+  width: 100%;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom p {
+  color: #666;
+  font-size: 12px;
+  margin: 0;
+}
+
+.footer-payments {
+  display: flex;
+  gap: 8px;
+}
+
+.footer-payments span {
+  background: rgba(255,255,255,0.08);
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 11px;
+  color: #999;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "MacBook Pro M3",
+    "category": "laptop",
+    "price": 25999999,
+    "stock": 10,
+    "description": "Laptop Apple dengan chip M3, layar 14 inci, RAM 16GB, SSD 512GB"
+  },
+  {
+    "id": 2,
+    "name": "Lenovo ThinkPad X1 Carbon",
+    "category": "laptop",
+    "price": 21999999,
+    "stock": 7,
+    "description": "Laptop bisnis ringan dengan prosesor Intel i7, RAM 16GB, SSD 512GB"
+  },
+  {
+    "id": 3,
+    "name": "Acer Predator Helios 300",
+    "category": "laptop",
+    "price": 18999999,
+    "stock": 5,
+    "description": "Laptop gaming dengan RTX 3060, Intel i7, RAM 16GB, SSD 1TB"
+  },
+  {
+    "id": 4,
+    "name": "Dell XPS 15",
+    "category": "laptop",
+    "price": 23999999,
+    "stock": 8,
+    "description": "Laptop premium dengan layar OLED 4K, Intel i9, RAM 32GB"
+  },
+  {
+    "id": 5,
+    "name": "iMac 24 M3",
+    "category": "komputer",
+    "price": 19999999,
+    "stock": 6,
+    "description": "All-in-one Apple M3, layar 4.5K 24 inci, RAM 16GB, SSD 256GB"
+  },
+  {
+    "id": 6,
+    "name": "Mac Mini M3",
+    "category": "komputer",
+    "price": 12999999,
+    "stock": 12,
+    "description": "Desktop kompak Apple M3, RAM 16GB, SSD 512GB"
+  },
+  {
+    "id": 7,
+    "name": "PC Gaming Rakitan",
+    "category": "komputer",
+    "price": 15999999,
+    "stock": 4,
+    "description": "Desktop gaming RTX 4070, Intel i5, RAM 32GB, SSD 1TB"
+  },
+  {
+    "id": 8,
+    "name": "HP ProDesk 400",
+    "category": "komputer",
+    "price": 8999999,
+    "stock": 15,
+    "description": "Desktop kantor Intel i5, RAM 8GB, SSD 256GB, monitor included"
+  },
+  {
+    "id": 9,
+    "name": "iPad Pro M4",
+    "category": "tablet",
+    "price": 15999999,
+    "stock": 9,
+    "description": "Tablet Apple M4, layar 12.9 inci, RAM 16GB, SSD 256GB"
+  },
+  {
+    "id": 10,
+    "name": "Samsung Galaxy Tab S9 Ultra",
+    "category": "tablet",
+    "price": 13999999,
+    "stock": 11,
+    "description": "Tablet Android 14.6 inci, RAM 16GB, SSD 512GB, S-Pen included"
+  },
+  {
+    "id": 11,
+    "name": "Microsoft Surface Pro 10",
+    "category": "tablet",
+    "price": 17999999,
+    "stock": 6,
+    "description": "Tablet Windows Intel i7, RAM 16GB, SSD 256GB, keyboard included"
+  },
+  {
+    "id": 12,
+    "name": "Xiaomi Pad 6",
+    "category": "tablet",
+    "price": 5999999,
+    "stock": 20,
+    "description": "Tablet Android 11 inci, RAM 8GB, SSD 256GB, harga terjangkau"
+  }
+]
