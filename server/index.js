@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
@@ -359,12 +360,20 @@ app.get('/api/me', authMiddleware, (req, res) => {
   res.json({ username: req.user.username, role: req.user.role });
 });
 
+if (process.env.NODE_ENV === 'production') {
+  const clientDist = path.join(__dirname, '..', 'client', 'dist');
+  app.use(express.static(clientDist));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientDist, 'index.html'));
+  });
+}
+
 initDatabase().then(() => {
   app.listen(PORT, () => {
     console.log(`Server berjalan di http://localhost:${PORT}`);
   });
 }).catch(err => {
   console.error('Database init failed:', err.message);
-  console.log('Make sure MySQL is running on localhost:3306 with user:root pass:root');
+  console.log('Pastikan MySQL berjalan. Cek konfigurasi di file server/.env');
   process.exit(1);
 });

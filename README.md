@@ -6,6 +6,26 @@ Desain mengacu ke https://els.id/ — orange accent `#f57c00`, font Poppins, lay
 
 ---
 
+## Quick Start (Fresh Clone)
+
+```bash
+# 1. Clone
+git clone https://github.com/username/E-commerce.git
+cd E-commerce
+
+# 2. Install semua dependencies
+npm run install:all
+
+# 3. Buat file .env (lihat langkah 3 di bawah)
+
+# 4. Jalankan (development — 2 terminal otomatis)
+npm run dev
+```
+
+Buka `http://localhost:3000`
+
+---
+
 ## Fitur
 
 ### Frontend
@@ -37,7 +57,7 @@ Desain mengacu ke https://els.id/ — orange accent `#f57c00`, font Poppins, lay
 
 ---
 
-## Persiapan
+## Persiapan Manual (Step by Step)
 
 ### 1. MySQL
 
@@ -45,56 +65,53 @@ Pastikan MySQL berjalan di `localhost:3306` dengan user `root`.
 
 Database `ecommerce` akan otomatis dibuat saat server pertama kali dijalankan.
 
-### 2. Environment Variables
+### 2. Install Dependencies
+
+```bash
+# Dari root folder
+npm run install:all
+
+# Atau manual:
+cd server && npm install
+cd ../client && npm install
+```
+
+### 3. Environment Variables
 
 Buat file `.env` di folder `server/`:
 
 ```bash
 cd server
-cp .env.example .env   # atau buat manual
+cp .env.example .env
 ```
 
-Isi `.env`:
+Lalu edit `server/.env` sesuai konfigurasi MySQL kamu:
 
 ```env
 PORT=5000
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=root
+DB_PASSWORD=password_mysql_kamu
 DB_PORT=3306
 DB_NAME=ecommerce
 ```
 
 > **Penting:** Jangan commit file `.env` ke repository. File ini sudah masuk `.gitignore`.
 
-### 3. Backend
+### 4. Jalankan
 
+**Development** (server + client secara bersamaan):
 ```bash
-cd server
-npm install
-npm start
-```
-
-Server berjalan di `http://localhost:5000`
-
-### 4. Frontend
-
-```bash
-cd client
-npm install
 npm run dev
 ```
+- Frontend: `http://localhost:3000` (Vite dev server + proxy ke API)
+- Backend: `http://localhost:5000` (API only)
 
-Aplikasi berjalan di `http://localhost:5173` (Vite dev server)
-
-### 4. Build untuk produksi
-
+**Production** (build + serve):
 ```bash
-cd client
-npm run build
+npm run start:prod
 ```
-
-Output ada di `client/dist/`. Serve dengan Express atau Nginx.
+- Aplikasi: `http://localhost:5000` (Express serve semua)
 
 ---
 
@@ -139,12 +156,46 @@ Output ada di `client/dist/`. Serve dengan Express atau Nginx.
 
 ---
 
+## NPM Scripts
+
+### Root
+
+| Script | Keterangan |
+|--------|------------|
+| `npm run install:all` | Install dependencies server + client |
+| `npm run dev` | Jalankan server + client bersamaan (development) |
+| `npm run build` | Build client untuk produksi |
+| `npm run start` | Jalankan server saja (port 5000) |
+| `npm run start:prod` | Build + jalankan dalam mode produksi |
+
+### Server (`cd server`)
+
+| Script | Keterangan |
+|--------|------------|
+| `npm start` | Jalankan server (port 5000) |
+
+### Client (`cd client`)
+
+| Script | Keterangan |
+|--------|------------|
+| `npm run dev` | Vite dev server (port 3000, proxy ke 5000) |
+| `npm run build` | Build ke `dist/` |
+| `npm run preview` | Preview build result |
+
+---
+
 ## Struktur Folder
 
 ```
 E-commerce/
+├── package.json              # Root — scripts untuk dev/prod
+├── .gitignore                # Git ignore rules
+├── README.md
 ├── server/
-│   ├── index.js          # Express server + semua API
+│   ├── index.js              # Express server + semua API
+│   ├── .env                  # Config (gitignored)
+│   ├── .env.example          # Template config
+│   ├── .gitignore
 │   └── package.json
 ├── client/
 │   ├── src/
@@ -162,8 +213,9 @@ E-commerce/
 │   │       ├── InfoPage.jsx/css     # Halaman konten (footer links)
 │   │       └── Footer.jsx/css       # Footer dengan link aktif
 │   ├── index.html
+│   ├── vite.config.js        # Vite config + proxy
+│   ├── .gitignore
 │   └── package.json
-└── README.md
 ```
 
 ---
@@ -188,6 +240,3 @@ E-commerce/
 - Admin bisa input kategori bebas (tidak dibatasi dropdown)
 - Halaman info (FAQ, dll) bisa diedit admin melalui tab "Halaman" di Panel Admin
 - Konten halaman info tersimpan di database, dengan fallback default jika belum diedit
-# E-commerce
-# E-commerce
-# E-commerce
