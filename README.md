@@ -41,11 +41,33 @@ Desain mengacu ke https://els.id/ — orange accent `#f57c00`, font Poppins, lay
 
 ### 1. MySQL
 
-Pastikan MySQL berjalan di `localhost:3306` dengan user `root` / password `root`.
+Pastikan MySQL berjalan di `localhost:3306` dengan user `root`.
 
 Database `ecommerce` akan otomatis dibuat saat server pertama kali dijalankan.
 
-### 2. Backend
+### 2. Environment Variables
+
+Buat file `.env` di folder `server/`:
+
+```bash
+cd server
+cp .env.example .env   # atau buat manual
+```
+
+Isi `.env`:
+
+```env
+PORT=5000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=root
+DB_PORT=3306
+DB_NAME=ecommerce
+```
+
+> **Penting:** Jangan commit file `.env` ke repository. File ini sudah masuk `.gitignore`.
+
+### 3. Backend
 
 ```bash
 cd server
@@ -55,7 +77,7 @@ npm start
 
 Server berjalan di `http://localhost:5000`
 
-### 3. Frontend
+### 4. Frontend
 
 ```bash
 cd client
